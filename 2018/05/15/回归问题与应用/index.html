@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="--线性回归 --逻辑回归," />
 
 
 
@@ -79,13 +79,40 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="云峤的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$ 输出/预测的结果yi为连续值变量 需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x_{1}">
+<meta name="keywords" content="--线性回归 --逻辑回归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="回归问题与应用">
+<meta property="og:url" content="http://yoursite.com/2018/05/15/回归问题与应用/index.html">
 <meta property="og:site_name" content="云峤的博客">
+<meta property="og:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$ 输出/预测的结果yi为连续值变量 需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x_{1}">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/15263887690166.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263888651232.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263890555708.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263890849988.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263891303686.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263892401375.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263915978608.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263916811723.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263918075085.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263920230988.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263923525848.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263924585413.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263924755628.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263925634197.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263926412796.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263942763780.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263943568247.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263943706388.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263944237737.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263944351506.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15263944456044.jpg">
+<meta property="og:updated_time" content="2018-05-15T14:36:34.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="云峤的博客">
+<meta name="twitter:title" content="回归问题与应用">
+<meta name="twitter:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$ 输出/预测的结果yi为连续值变量 需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x_{1}">
+<meta name="twitter:image" content="http://yoursite.com/images/15263887690166.jpg">
 
 
 
@@ -115,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/15/回归问题与应用/"/>
 
 
 
 
 
-  <title>云峤的博客</title>
+  <title>回归问题与应用 | 云峤的博客</title>
   
 
 
@@ -140,8 +167,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,9 +260,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -266,9 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/15/回归问题与应用/" itemprop="url">回归问题与应用</a></h1>
+          <h1 class="post-title" itemprop="name headline">回归问题与应用</h1>
         
 
         <div class="post-meta">
@@ -340,9 +364,7 @@
       
 
       
-        
-          
-            <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="定义与问题引入"><a href="#定义与问题引入" class="headerlink" title="定义与问题引入"></a>定义与问题引入</h2><h3 id="何为线性回归？"><a href="#何为线性回归？" class="headerlink" title="何为线性回归？"></a>何为线性回归？</h3><ol>
+        <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="定义与问题引入"><a href="#定义与问题引入" class="headerlink" title="定义与问题引入"></a>定义与问题引入</h2><h3 id="何为线性回归？"><a href="#何为线性回归？" class="headerlink" title="何为线性回归？"></a>何为线性回归？</h3><ol>
 <li>有监督学习=&gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$</li>
 <li>输出/预测的结果yi为连续值变量</li>
 <li>需要学习映射</li>
@@ -405,8 +427,6 @@
 <li>Spark MLlib</li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -421,303 +441,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/15/概率论与凸优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jam Yang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/jam.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云峤的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/15/概率论与凸优化/" itemprop="url">概率论与凸优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-15T15:06:56+08:00">
-                2018-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/线性回归-逻辑回归/" rel="tag"># --线性回归 --逻辑回归</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h1><h2 id="概率空间与随机变量"><a href="#概率空间与随机变量" class="headerlink" title="概率空间与随机变量"></a>概率空间与随机变量</h2><p>古典概率 or 统计定义:频率<br>现代概率 or 公理化定义:测度论 (科尔莫戈罗夫)</p>
-<h3 id="概率空间"><a href="#概率空间" class="headerlink" title="概率空间"></a>概率空间</h3><p>概率空间三元组 (Ω,F,P):<br>Ω: 样本空间(最小不可分的独立互斥事件集合) F: 事件(Ω 的子集构成)<br>P: 测度(事件的概率)</p>
-<h3 id="随机变量"><a href="#随机变量" class="headerlink" title="随机变量"></a>随机变量</h3><p>随机变量是一个从概率空间到实数域 R 的可测函数: X(ω) : Ω → R。例<br>如:随机变量 X &gt; 0 对应的集合 {ω ∈ Ω : X(ω) &gt; 0} 是一个可测事件。</p>
-<h2 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h2><p>如果 A, B 是两个事件，那么条件概率满足公式<br><img src="/images/15263693573983.jpg" alt=""></p>
-<h2 id="后验分布，先验分布，似然函数"><a href="#后验分布，先验分布，似然函数" class="headerlink" title="后验分布，先验分布，似然函数"></a>后验分布，先验分布，似然函数</h2><p>X: 观测数据，θ: 模型参数<br><img src="/images/15263694077646.jpg" alt=""><br>后验分布 ∝ 先验分布 × 似然函数</p>
-<h2 id="随机变量的特征函数"><a href="#随机变量的特征函数" class="headerlink" title="随机变量的特征函数"></a>随机变量的特征函数</h2><h2 id="两大基本定理"><a href="#两大基本定理" class="headerlink" title="两大基本定理"></a>两大基本定理</h2><h2 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h2><h1 id="凸优化"><a href="#凸优化" class="headerlink" title="凸优化"></a>凸优化</h1><h2 id="凸集合与凸函数"><a href="#凸集合与凸函数" class="headerlink" title="凸集合与凸函数"></a>凸集合与凸函数</h2><h2 id="保凸运算"><a href="#保凸运算" class="headerlink" title="保凸运算"></a>保凸运算</h2><h2 id="共轭函数"><a href="#共轭函数" class="headerlink" title="共轭函数"></a>共轭函数</h2><h2 id="带边界优化的对偶问题"><a href="#带边界优化的对偶问题" class="headerlink" title="带边界优化的对偶问题"></a>带边界优化的对偶问题</h2><h2 id="KKT-条件"><a href="#KKT-条件" class="headerlink" title="KKT 条件"></a>KKT 条件</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/15/机器学习中的微积分与矩阵/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jam Yang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/jam.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云峤的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/15/机器学习中的微积分与矩阵/" itemprop="url">机器学习中的微积分与矩阵</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-15T14:32:38+08:00">
-                2018-05-15
-              </time>
+              <a href="/2018/05/15/概率论与凸优化/" rel="next" title="概率论与凸优化">
+                <i class="fa fa-chevron-left"></i> 概率论与凸优化
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="微积分选讲"><a href="#微积分选讲" class="headerlink" title="微积分选讲"></a>微积分选讲</h1><h2 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h2><h3 id="通俗语言"><a href="#通俗语言" class="headerlink" title="通俗语言"></a>通俗语言</h3><p>函数f在x0处的极限为L</p>
-<h3 id="数学符号"><a href="#数学符号" class="headerlink" title="数学符号"></a>数学符号</h3><p>$<br>\lim_{x \to +\infty}<br>$</p>
-<h3 id="精确描述"><a href="#精确描述" class="headerlink" title="精确描述"></a>精确描述</h3><h2 id="微分与泰勒级数"><a href="#微分与泰勒级数" class="headerlink" title="微分与泰勒级数"></a>微分与泰勒级数</h2><h2 id="积分与微积分基本定理"><a href="#积分与微积分基本定理" class="headerlink" title="积分与微积分基本定理"></a>积分与微积分基本定理</h2><h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><h1 id="线性代数选讲"><a href="#线性代数选讲" class="headerlink" title="线性代数选讲"></a>线性代数选讲</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -727,151 +480,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/机器学习年代谱/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jam Yang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/jam.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云峤的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/13/机器学习年代谱/" itemprop="url">机器学习年代谱</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-13T15:38:41+08:00">
-                2018-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -879,6 +492,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -899,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -964,6 +590,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义与问题引入"><span class="nav-number">1.1.</span> <span class="nav-text">定义与问题引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#何为线性回归？"><span class="nav-number">1.1.1.</span> <span class="nav-text">何为线性回归？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-预测阶段"><span class="nav-number">1.1.2.</span> <span class="nav-text">测试/预测阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何表示f"><span class="nav-number">1.1.3.</span> <span class="nav-text">如何表示f</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">1.2.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降"><span class="nav-number">1.3.</span> <span class="nav-text">梯度下降</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合与正则化"><span class="nav-number">1.4.</span> <span class="nav-text">过拟合与正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过拟合"><span class="nav-number">1.4.1.</span> <span class="nav-text">过拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则化"><span class="nav-number">1.4.2.</span> <span class="nav-text">正则化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归示例"><span class="nav-number">1.5.</span> <span class="nav-text">线性回归示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义与问题引入-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义与问题引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判定边界"><span class="nav-number">2.1.1.</span> <span class="nav-text">线性判定边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非线性判定边界"><span class="nav-number">2.1.2.</span> <span class="nav-text">非线性判定边界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数-1"><span class="nav-number">2.2.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降-1"><span class="nav-number">2.3.</span> <span class="nav-text">梯度下降</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分类与多分类"><span class="nav-number">2.4.</span> <span class="nav-text">二分类与多分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑斯蒂示例"><span class="nav-number">2.5.</span> <span class="nav-text">逻辑斯蒂示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性决策边界"><span class="nav-number">2.5.1.</span> <span class="nav-text">线性决策边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非线性决策边界"><span class="nav-number">2.5.2.</span> <span class="nav-text">非线性决策边界</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法应用经验"><span class="nav-number">3.</span> <span class="nav-text">算法应用经验</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1104,6 +746,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
