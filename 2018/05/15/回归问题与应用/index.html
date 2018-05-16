@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="--线性回归 --逻辑回归," />
+  <meta name="keywords" content="线性回归,逻辑回归," />
 
 
 
@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$ 输出/预测的结果yi为连续值变量 需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x_{1}">
-<meta name="keywords" content="--线性回归 --逻辑回归">
+<meta name="description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D=\{(X_i,y_i)\}^N_{i=1}$  输出/预测的结果yi为连续值变量  需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x">
+<meta name="keywords" content="线性回归,逻辑回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="回归问题与应用">
 <meta property="og:url" content="http://yoursite.com/2018/05/15/回归问题与应用/index.html">
 <meta property="og:site_name" content="云峤的博客">
-<meta property="og:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$ 输出/预测的结果yi为连续值变量 需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x_{1}">
+<meta property="og:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D=\{(X_i,y_i)\}^N_{i=1}$  输出/预测的结果yi为连续值变量  需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/15263887690166.jpg">
 <meta property="og:image" content="http://yoursite.com/images/15263888651232.jpg">
@@ -108,10 +108,10 @@
 <meta property="og:image" content="http://yoursite.com/images/15263944237737.jpg">
 <meta property="og:image" content="http://yoursite.com/images/15263944351506.jpg">
 <meta property="og:image" content="http://yoursite.com/images/15263944456044.jpg">
-<meta property="og:updated_time" content="2018-05-15T14:36:34.422Z">
+<meta property="og:updated_time" content="2018-05-16T06:20:41.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回归问题与应用">
-<meta name="twitter:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$ 输出/预测的结果yi为连续值变量 需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x_{1}">
+<meta name="twitter:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D=\{(X_i,y_i)\}^N_{i=1}$  输出/预测的结果yi为连续值变量  需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x">
 <meta name="twitter:image" content="http://yoursite.com/images/15263887690166.jpg">
 
 
@@ -365,16 +365,20 @@
 
       
         <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><h2 id="定义与问题引入"><a href="#定义与问题引入" class="headerlink" title="定义与问题引入"></a>定义与问题引入</h2><h3 id="何为线性回归？"><a href="#何为线性回归？" class="headerlink" title="何为线性回归？"></a>何为线性回归？</h3><ol>
-<li>有监督学习=&gt;学习样本为 $D={(X_i,y_i)}^N_{i=1}$</li>
-<li>输出/预测的结果yi为连续值变量</li>
+<li><p>有监督学习=&gt;学习样本为 $D=\{(X_i,y_i)\}^N_{i=1}$</p>
+</li>
+<li><p>输出/预测的结果yi为连续值变量</p>
+</li>
 <li>需要学习映射</li>
 <li>假定输入x和输出y之间有线性相关关系</li>
 </ol>
 <h3 id="测试-预测阶段"><a href="#测试-预测阶段" class="headerlink" title="测试/预测阶段"></a>测试/预测阶段</h3><p>对于给定的x，预测其输出 $\hat{y}=f(x)$</p>
 <h3 id="如何表示f"><a href="#如何表示f" class="headerlink" title="如何表示f"></a>如何表示f</h3><p>线性回归：假设函数f为输入x的线性函数：<br>$f(x)=\theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+…+\theta_{n}x_{n}$<br>写成向量形式（在特征x中增加一维$x_0=1$,表示截距项):<br>$f(x)=\theta^{T}x$</p>
-<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>我们要找到最好的权重/参数$[\theta_0,\theta_0,…,\theta_n]=\theta$<br>那么怎么去衡量最好？<br>我们把x到y的映射函数f记作$\theta$的函数$h_\theta(x)$<br>定义损失函数为:<br>$$J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2$$<br>为了最小化损失函数，找出凸函数的极值点。</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>我们要找到最好的权重/参数$[\theta_0,\theta_0,…,\theta_n]=\theta$<br>那么怎么去衡量最好？<br>我们把x到y的映射函数f记作$\theta$的函数$h_\theta(x)$<br>定义损失函数为:</p>
+<script type="math/tex; mode=display">J(\theta_0,\theta_1,...,\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2</script><p>为了最小化损失函数，找出凸函数的极值点。</p>
 <p>单特征损失函数曲线：<br><img src="/images/15263887690166.jpg" alt=""><br>多特征损失函数曲线<br><img src="/images/15263888651232.jpg" alt=""></p>
-<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>逐步求解最小化损失函数的过程<br>如同下山，找准方向（斜率），每次迈进一小步，直至山底<br>$$\theta_1:=\theta_1-\alpha\frac{d}{d\theta_1}J(\theta_1)$$<br><img src="/images/15263890555708.jpg" alt=""><br><img src="/images/15263890849988.jpg" alt=""><br><img src="/images/15263891303686.jpg" alt=""></p>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>逐步求解最小化损失函数的过程<br>如同下山，找准方向（斜率），每次迈进一小步，直至山底</p>
+<script type="math/tex; mode=display">\theta_1:=\theta_1-\alpha\frac{d}{d\theta_1}J(\theta_1)</script><p><img src="/images/15263890555708.jpg" alt=""><br><img src="/images/15263890849988.jpg" alt=""><br><img src="/images/15263891303686.jpg" alt=""></p>
 <p>如果现在有n个特征/变量$x_j(j=1…n)$<br><img src="/images/15263892401375.jpg" alt=""></p>
 <h2 id="过拟合与正则化"><a href="#过拟合与正则化" class="headerlink" title="过拟合与正则化"></a>过拟合与正则化</h2><h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><p>过拟合问题:如果我们有非常多特征/模型很复杂, 我们的假设函数曲线可以对 原始数据拟合得非常好($J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2\thickapprox0$), 但丧失了一般性，从而导 致对新给的待预测样本，预测效果差。<br>所有的模型都可能存在过拟合的风险:</p>
 <ol>
@@ -389,9 +393,16 @@
 <h2 id="定义与问题引入-1"><a href="#定义与问题引入-1" class="headerlink" title="定义与问题引入"></a>定义与问题引入</h2><p>逻辑斯蒂回归的目的是找出判定边界。<br><img src="/images/15263923525848.jpg" alt=""></p>
 <h3 id="线性判定边界"><a href="#线性判定边界" class="headerlink" title="线性判定边界"></a>线性判定边界</h3><p><img src="/images/15263924585413.jpg" alt=""></p>
 <h3 id="非线性判定边界"><a href="#非线性判定边界" class="headerlink" title="非线性判定边界"></a>非线性判定边界</h3><p><img src="/images/15263924755628.jpg" alt=""></p>
-<h2 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h2><p>如果采用差方的损失函数$J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2$<br><img src="/images/15263925634197.jpg" alt=""><br>存在多个二局部最优解，无法根据GT找到最小损失值。<br>我们希望的形状是下面酱紫的。<br><img src="/images/15263926412796.jpg" alt=""><br>那么损失函数可以这么设计：<br>$$<br>Cost(h_\theta(x),y)=<br>\begin{aligned}<br>-log(h_\theta(x))\qquad if\qquad y = 1 \<br>-log(1-h_\theta(x))\qquad if\qquad y = 0<br>\end{aligned} \<br>J(\theta) = \frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)}))\<br>= -\frac{1}{m}[\sum_{i=1}^my^{(i)}logh_\theta(x^{(i)})+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]+\frac{\lambda}{2m}\sum_{j-1}^n\theta_j^2<br>$$</p>
-<h2 id="梯度下降-1"><a href="#梯度下降-1" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>$$<br>\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta)<br>$$</p>
-<h2 id="二分类与多分类"><a href="#二分类与多分类" class="headerlink" title="二分类与多分类"></a>二分类与多分类</h2><ol>
+<h2 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h2><p>如果采用差方的损失函数$J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2$<br><img src="/images/15263925634197.jpg" alt=""><br>存在多个二局部最优解，无法根据GT找到最小损失值。<br>我们希望的形状是下面酱紫的。<br><img src="/images/15263926412796.jpg" alt=""><br>那么损失函数可以这么设计：</p>
+<script type="math/tex; mode=display">
+Cost(h_\theta(x),y)=
+\begin{aligned}
+-log(h_\theta(x))\qquad if\qquad y = 1 \\
+-log(1-h_\theta(x))\qquad if\qquad y = 0
+\end{aligned} \\
+J(\theta) = \frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)}))\\
+= -\frac{1}{m}[\sum_{i=1}^my^{(i)}logh_\theta(x^{(i)})+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]+\frac{\lambda}{2m}\sum_{j-1}^n\theta_j^2</script><h2 id="梯度下降-1"><a href="#梯度下降-1" class="headerlink" title="梯度下降"></a>梯度下降</h2><script type="math/tex; mode=display">
+\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta)</script><h2 id="二分类与多分类"><a href="#二分类与多分类" class="headerlink" title="二分类与多分类"></a>二分类与多分类</h2><ol>
 <li>one vs one</li>
 <li>one vs rest<br><img src="/images/15263942763780.jpg" alt=""></li>
 </ol>
@@ -443,7 +454,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/线性回归-逻辑回归/" rel="tag"># --线性回归 --逻辑回归</a>
+            <a href="/tags/线性回归/" rel="tag"># 线性回归</a>
+          
+            <a href="/tags/逻辑回归/" rel="tag"># 逻辑回归</a>
           
         </div>
       
@@ -456,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/15/概率论与凸优化/" rel="next" title="概率论与凸优化">
-                <i class="fa fa-chevron-left"></i> 概率论与凸优化
+              <a href="/2018/05/13/机器学习年代谱/" rel="next" title="机器学习年代谱">
+                <i class="fa fa-chevron-left"></i> 机器学习年代谱
               </a>
             
           </div>
@@ -465,6 +478,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/如何在hexo中渲染MathJax数学公式/" rel="prev" title="如何在hexo中渲染MathJax数学公式">
+                如何在hexo中渲染MathJax数学公式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -545,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -556,7 +573,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -567,7 +584,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -807,6 +824,8 @@
   
 
   
+  
+
 
   
 
