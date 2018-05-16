@@ -667,7 +667,9 @@
 <h2 id="过拟合与正则化"><a href="#过拟合与正则化" class="headerlink" title="过拟合与正则化"></a>过拟合与正则化</h2><h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><p>过拟合问题:如果我们有非常多特征/模型很复杂, 我们的假设函数曲线可以对 原始数据拟合得非常好($J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2\thickapprox0$), 但丧失了一般性，从而导 致对新给的待预测样本，预测效果差。<br>所有的模型都可能存在过拟合的风险:</p>
 <ol>
 <li>更多的参数，更复杂的模型，意味着有更强的能力，但也更可能无法无天</li>
-<li>眼见不一定为实，你看到的内容不一定是全部真实的数据分布，死记硬背不太好<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3></li>
+<li>眼见不一定为实，你看到的内容不一定是全部真实的数据分布，死记硬背不太好</li>
+</ol>
+<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3><ol>
 <li>控制参数幅度，不让模型“无法无天”</li>
 <li>限制参数搜索空间<br>$J(\theta)=\frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^{n}\theta_j^2]$</li>
 </ol>

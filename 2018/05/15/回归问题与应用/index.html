@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/images/15263944237737.jpg">
 <meta property="og:image" content="http://yoursite.com/images/15263944351506.jpg">
 <meta property="og:image" content="http://yoursite.com/images/15263944456044.jpg">
-<meta property="og:updated_time" content="2018-05-16T07:33:44.609Z">
+<meta property="og:updated_time" content="2018-05-16T07:35:48.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回归问题与应用">
 <meta name="twitter:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D=\{(X_i,y_i)\}^N_{i=1}$  输出/预测的结果yi为连续值变量  需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x">
@@ -383,7 +383,9 @@
 <h2 id="过拟合与正则化"><a href="#过拟合与正则化" class="headerlink" title="过拟合与正则化"></a>过拟合与正则化</h2><h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><p>过拟合问题:如果我们有非常多特征/模型很复杂, 我们的假设函数曲线可以对 原始数据拟合得非常好($J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2\thickapprox0$), 但丧失了一般性，从而导 致对新给的待预测样本，预测效果差。<br>所有的模型都可能存在过拟合的风险:</p>
 <ol>
 <li>更多的参数，更复杂的模型，意味着有更强的能力，但也更可能无法无天</li>
-<li>眼见不一定为实，你看到的内容不一定是全部真实的数据分布，死记硬背不太好<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3></li>
+<li>眼见不一定为实，你看到的内容不一定是全部真实的数据分布，死记硬背不太好</li>
+</ol>
+<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3><ol>
 <li>控制参数幅度，不让模型“无法无天”</li>
 <li>限制参数搜索空间<br>$J(\theta)=\frac{1}{2m}[\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})^2+\lambda\sum_{j=1}^{n}\theta_j^2]$</li>
 </ol>
