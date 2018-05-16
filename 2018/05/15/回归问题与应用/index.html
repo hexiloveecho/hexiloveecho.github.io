@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/images/15263944237737.jpg">
 <meta property="og:image" content="http://yoursite.com/images/15263944351506.jpg">
 <meta property="og:image" content="http://yoursite.com/images/15263944456044.jpg">
-<meta property="og:updated_time" content="2018-05-16T06:20:41.395Z">
+<meta property="og:updated_time" content="2018-05-16T07:33:44.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回归问题与应用">
 <meta name="twitter:description" content="线性回归定义与问题引入何为线性回归？ 有监督学习=&amp;gt;学习样本为 $D=\{(X_i,y_i)\}^N_{i=1}$  输出/预测的结果yi为连续值变量  需要学习映射 假定输入x和输出y之间有线性相关关系  测试/预测阶段对于给定的x，预测其输出 $\hat{y}=f(x)$ 如何表示f线性回归：假设函数f为输入x的线性函数：$f(x)=\theta_{0}x_{0}+\theta_{1}x">
@@ -824,6 +824,26 @@ J(\theta) = \frac{1}{m}\sum_{i=1}^mCost(h_\theta(x^{(i)},y^{(i)}))\\
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
