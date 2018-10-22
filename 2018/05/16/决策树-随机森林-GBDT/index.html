@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="决策树介绍决策树又叫做decision tree，这个是一种比较简单但是又得到广泛应用的分类器的一种形式。我们一般都是通过训练的数据来搭建起决策树的模型。通过这个模型，我们可以高效的对于未知的数据进行归纳分类。 分治思想： 1234把数据集分成两组判断不同数据被完美区分开了吗不是:重复楼上两步是：完成分类 案例:预测小明今天出不出去打球 在上图中，如何判断选择哪个条件去区分是数据呢?首先需要引入一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树 随机森林 GBDT">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/决策树-随机森林-GBDT/index.html">
+<meta property="og:site_name" content="云峤的博客">
+<meta property="og:description" content="决策树介绍决策树又叫做decision tree，这个是一种比较简单但是又得到广泛应用的分类器的一种形式。我们一般都是通过训练的数据来搭建起决策树的模型。通过这个模型，我们可以高效的对于未知的数据进行归纳分类。 分治思想： 1234把数据集分成两组判断不同数据被完美区分开了吗不是:重复楼上两步是：完成分类 案例:预测小明今天出不出去打球 在上图中，如何判断选择哪个条件去区分是数据呢?首先需要引入一">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/15265380241397.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15265396099008.jpg">
+<meta property="og:image" content="http://yoursite.com/images/15265437652433.jpg">
+<meta property="og:updated_time" content="2018-05-17T14:04:33.384Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="决策树 随机森林 GBDT">
+<meta name="twitter:description" content="决策树介绍决策树又叫做decision tree，这个是一种比较简单但是又得到广泛应用的分类器的一种形式。我们一般都是通过训练的数据来搭建起决策树的模型。通过这个模型，我们可以高效的对于未知的数据进行归纳分类。 分治思想： 1234把数据集分成两组判断不同数据被完美区分开了吗不是:重复楼上两步是：完成分类 案例:预测小明今天出不出去打球 在上图中，如何判断选择哪个条件去区分是数据呢?首先需要引入一">
+<meta name="twitter:image" content="http://yoursite.com/images/15265380241397.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/16/决策树-随机森林-GBDT/"/>
+
+
+
+
+
+  <title>决策树 随机森林 GBDT | 云峤的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云峤的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/决策树-随机森林-GBDT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jam Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/jam.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云峤的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">决策树 随机森林 GBDT</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T22:28:41+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>决策树又叫做decision tree，这个是一种比较简单但是又得到广泛应用的分类器的一种形式。我们一般都是通过训练的数据来搭建起决策树的模型。通过这个模型，我们可以高效的对于未知的数据进行归纳分类。</p>
+<p>分治思想：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">把数据集分成两组</span><br><span class="line">判断不同数据被完美区分开了吗</span><br><span class="line">不是:重复楼上两步</span><br><span class="line">是：完成分类</span><br></pre></td></tr></table></figure>
+<p>案例:预测小明今天出不出去打球<br><img src="/images/15265380241397.jpg" alt=""></p>
+<p>在上图中，如何判断选择哪个条件去区分是数据呢?<br>首先需要引入一个判断纯度的标准：信息熵</p>
+<h2 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h2><p>H(S) = - P(是)logP(是) - P(否)logP(否)<br>这个标准需要是symmetric的，也就是说 4是/0否 = 0是/4否<br>更通用的表达式：$H(X)=-\sum_{i=1}^{n}p(x_i)logp(x_i)$<br>其中$P(x_{i}) $代表随机事件X为$x_{i}$的概率.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">不纯洁：</span><br><span class="line">eg:3是/3否</span><br><span class="line">H(S) = 1</span><br><span class="line"></span><br><span class="line">纯洁：</span><br><span class="line">eg:3是/0否</span><br><span class="line">H(S) = 0</span><br></pre></td></tr></table></figure>
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><script type="math/tex; mode=display">Gain(S,A)=H(S)-\sum(|S_v|/|S|)*H(S_v)</script><p>信息增益是特征选择的一个重要指标。这个值越大，说明该特征越重要，相应的信息增益也就越大。<br>前面我们说过，信息熵代表随机变量的复杂度，条件熵代表在某个条件下，随机变量的复杂度。<br>也就是信息增益代表了在一个条件下，信息复杂度减少程度。<br>所以，如果选择一个特征后，信息增益最大，我们可以选择这个特征进行划分。<br>eg:<br><img src="/images/15265396099008.jpg" alt=""><br>可以求得随机变量X（嫁与不嫁）的信息熵为：<br>嫁的个数为6个，占1/2，那么信息熵为-1/2log1/2-1/2log1/2 = -log1/2=0.301<br>现在假如我知道了一个男生的身高信息。身高有三个可能的取值{矮，中，高}矮包括{1,2,3,5,6,11,12}，嫁的个数为1个，不嫁的个数为6个中包括{8,9} ，嫁的个数为2个，不嫁的个数为0个高包括{4,7,10}，嫁的个数为3个，不嫁的个数为0。<br>我们先求出公式对应的:<br>H(Y|X = 矮) = -1/7log1/7-6/7log6/7=0.178<br>H(Y|X=中) = -1log1-0 = 0<br>H(Y|X=高） = -1log1-0=0<br>p(X = 矮) = 7/12<br>p(X =中) = 2/12<br>p(X=高) = 3/12<br>则可以得出条件熵为：7/12<em>0.178+2/12</em>0+3/12*0 = 0.103<br>那么我们知道信息熵与条件熵相减就是我们的信息增益，为0.301-0.103=0.198<br>所以我们可以得出我们在知道了身高这个信息之后，信息增益是0.198</p>
+<h3 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h3><p>为了解决ID3的bug,也就是过拟合问题，引入了信息增益率的概念，计算方式如下：</p>
+<script type="math/tex; mode=display">SplitEntropy(S,A)=-\sum\frac{|S_v|}{|S|}log\frac{|S_v|}{S} \\
+GainRatio(S,A)=\frac{Gain(S,A)}{SplitEntropy(S,A)}</script><p>其中SplitEntropy分裂信息项阻碍选择值为均匀分布的属性。例如，考虑一个带有n个样例的集合被属性A彻底分割（分成n组，即一个样例一组）。这时分裂信息的值为$log2n$。相反，一个布尔属性B分割相同的n实例，如果恰好平分两半，那么分裂信息是1.如果属性A和B产生同样的信息增益，那么根据增益比率度量，明显B的得分会更高。</p>
+<h3 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h3><p>CART算法采用基尼系数来选择划分属性。数据集D的纯度用基尼系数来度量：<br>$Gini(D) = \sum_{k=1}^{|y|}\sum_{k^,\neq k}^{}p_k^2=1-\sum_{k=1}^{|y|}p_k^2$<br>直观上说，Gini反应了从数据集D中随机抽取两个样本，其类别标注不一致的概率。因此，基尼系数越小，数据集D的纯度越高。<br>所以，我们在候选属性集合A中，选择哪个使得划分后基尼指数最小的属性作为最优划分属性。</p>
+<h2 id="常见算法"><a href="#常见算法" class="headerlink" title="常见算法"></a>常见算法</h2><p>包括ID3算法、C4.5算法、CART算法<br><img src="/images/15265437652433.jpg" alt=""></p>
+<h3 id="ID3算法"><a href="#ID3算法" class="headerlink" title="ID3算法"></a>ID3算法</h3><ol>
+<li>对当前样本集合，计算所有属性的信息增益</li>
+<li>选择信息增益最大的属性作为测试属性</li>
+<li>把测试属性取值相同的样本划分为同一个子样本集</li>
+<li>如果子样本集的类别值唯一，则分支为叶子节点；否则对子样本集递归调用本算法。</li>
+</ol>
+<p><strong>ID3 的bug</strong>:</p>
+<ol>
+<li>永远可以把N个数据分成100%纯洁的N组</li>
+<li>如果在『日期』这个条件下做分裂，就GG了了</li>
+</ol>
+<p><strong>如何避免过度拟合呢？</strong></p>
+<ol>
+<li>没必要的分裂不要整</li>
+<li>剪枝</li>
+</ol>
+<h3 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h3><p>剪枝是决策树学习中对付过拟合的主要手段。<br>基本策略有：预剪枝；后剪枝</p>
+<h3 id="连续与缺省值"><a href="#连续与缺省值" class="headerlink" title="连续与缺省值"></a>连续与缺省值</h3><h4 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h4><h4 id="缺省值"><a href="#缺省值" class="headerlink" title="缺省值"></a>缺省值</h4><h3 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h3><h2 id="更多的DT应用场景类别"><a href="#更多的DT应用场景类别" class="headerlink" title="更多的DT应用场景类别"></a>更多的DT应用场景类别</h2><ol>
+<li>连续函数</li>
+<li>多类别</li>
+<li>回归</li>
+</ol>
+<h2 id="决策树优缺点"><a href="#决策树优缺点" class="headerlink" title="决策树优缺点"></a>决策树优缺点</h2><p>优势:</p>
+<ul>
+<li>非黑盒</li>
+<li>轻松去除无关attribute (Gain = 0) - Test起来很快(O(depth))<br>劣势:</li>
+<li>只能线性分割数据</li>
+<li>贪婪算法(可能找不到最好的树)</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/回归问题案例分析/" rel="next" title="回归问题案例分析">
+                <i class="fa fa-chevron-left"></i> 回归问题案例分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/17/集成学习算法/" rel="prev" title="集成学习算法">
+                集成学习算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/jam.jpeg"
+                alt="Jam Yang" />
+            
+              <p class="site-author-name" itemprop="name">Jam Yang</p>
+              <p class="site-description motion-element" itemprop="description">不负芳华</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息熵"><span class="nav-number">1.2.</span> <span class="nav-text">信息熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益"><span class="nav-number">1.3.</span> <span class="nav-text">信息增益</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增益率"><span class="nav-number">1.3.1.</span> <span class="nav-text">增益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基尼系数"><span class="nav-number">1.3.2.</span> <span class="nav-text">基尼系数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见算法"><span class="nav-number">1.4.</span> <span class="nav-text">常见算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ID3算法"><span class="nav-number">1.4.1.</span> <span class="nav-text">ID3算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪枝处理"><span class="nav-number">1.4.2.</span> <span class="nav-text">剪枝处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续与缺省值"><span class="nav-number">1.4.3.</span> <span class="nav-text">连续与缺省值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#连续值处理"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">连续值处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺省值"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">缺省值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多变量决策树"><span class="nav-number">1.4.4.</span> <span class="nav-text">多变量决策树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的DT应用场景类别"><span class="nav-number">1.5.</span> <span class="nav-text">更多的DT应用场景类别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树优缺点"><span class="nav-number">1.6.</span> <span class="nav-text">决策树优缺点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jam Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
